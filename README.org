@@ -1,6 +1,6 @@
 #+TITLE: org-jmpress-js.el
 #+SUBTITLE: minimalistic org-mode backend for jmpress.js
-#+AUTHOR: FranÃ§ois-David Collin
+#+AUTHOR: François-David Collin
 #+OPTIONS: toc:1 num:nil
 #+JMPRESSJS_STYLE: css/simple.css
 #+JMPRESSJQ_SRC: js/jquery/jquery.min.js
