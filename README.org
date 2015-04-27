@@ -15,17 +15,18 @@
   * See http://orgmode.org/ about Org-mode.
   * See http://jmpressjs.github.io/jmpress.js/ about jmpress.js.
 
-  This work is mostly based on kinjo's own impress.js backend.
+  This work is mostly based on kinjo's own impress.js org-mode
+  backend.
 
   This has been tested on latest org-mode (git version)
 
 * INSTALLATION
-  1. First of all, make sure your Org-mode version.
-     This library has been tested on 8.3beta.
+  1. First of all, let's make sure about your Org-mode version.
+     This library has been tested on 8.3x.
      #+BEGIN_SRC text
        M-x org-version
      #+END_SRC
-  2. Get org-impress-js.el. For example,
+  2. Get org-jmpress-js.el. For example,
      #+BEGIN_SRC sh
        git clone https://github.com/fradav/org-jmpress-js.el.git
      #+END_SRC
