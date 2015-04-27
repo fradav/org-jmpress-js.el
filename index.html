@@ -4,13 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-jmpress-js.el</title>
-<!-- 2015-04-27 lun. 16:27 -->
+<!-- 2015-04-27 lun. 17:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="FranÃ§ois-David Collin" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<link  rel="stylesheet" href="css/simple.css" type="text/css" /><script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/jmpress/jmpress.js"></script>
+<link  rel="stylesheet" href="css/simple.css" type="text/css" /><script src="js/jquery/jquery.min.js"></script>
+<script src="js/jmpress/jmpress.js"></script>
 <script src="simple.js"></script>
 </head>
 <body>
@@ -28,8 +28,9 @@
 <li><a href="#orgheadline3">INSTALLATION Part two</a></li>
 <li><a href="#orgheadline4">USAGE</a></li>
 <li><a href="#orgheadline5">EXPORT OPTIONS</a></li>
-<li><a href="#orgheadline6">GUIDELINES</a></li>
-<li><a href="#orgheadline7">LICENSE</a></li>
+<li><a href="#orgheadline6">MOTIVATIONS</a></li>
+<li><a href="#orgheadline7">GUIDELINES</a></li>
+<li><a href="#orgheadline8">LICENSE</a></li>
 </ul>
 </div>
 </div>
@@ -101,27 +102,19 @@ Add load-path in your init.el and restart the emacs.
 <ol class="org-ol">
 <li>Install node-kit</li>
 <li><p>
-Install Bower
+Install Bower-installer
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">npm install -g bower
+<pre class="src src-sh">npm install -g bower-installer
 </pre>
 </div></li>
 <li><p>
-Install jQuery
+Install jQuery and jmpress
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">bower install jquery
-</pre>
-</div></li>
-<li><p>
-Install jmpress.js
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">bower install jmpress
+<pre class="src src-sh">bower-installer
 </pre>
 </div></li>
 </ol>
@@ -164,13 +157,27 @@ Following special export options are available.
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">GUIDELINES</h2>
+<h2 id="orgheadline6">MOTIVATIONS</h2>
 <div class="outline-text-2" id="text-orgheadline6">
+<ul class="org-ul">
+<li>As org-mode is always in motion, an org-html derived backend like
+<code>org-jmpress-js.el</code> is somewhat problematic in mid/long term,
+because of broken dependencies.</li>
+<li>The fact that <code>jmpress.js</code> already
+use <code>jQuery</code> should allow us to centralize all the presentation
+magics in the javascript side.</li>
+<li>That's why the elisp file almost does nothing except adding the
+specific js and css files to a vanilla org-html generated file.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">GUIDELINES</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
-The main idea is to generate an almost vanilla org-html file and to
-handle everything for jmpress with the help of <code>jQuery</code> DOM
-facilities. So a user script should contain three parts (see
-<code>simple.js</code> for example):
+The user script should contain three parts (see <code>simple.js</code> for
+example):
 </p>
 <dl class="org-dl">
 <dt>DOM reorganisation</dt><dd>like title, postamble placement, id
@@ -182,9 +189,9 @@ the mandatory <code>.jmpress()</code> call</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">LICENSE</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">LICENSE</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <p>
 Licensed under the GPLv2 license.
 </p>
@@ -193,7 +200,7 @@ Licensed under the GPLv2 license.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: FranÃ§ois-David Collin</p>
-<p class="date">Created: 2015-04-27 lun. 16:27</p>
+<p class="date">Created: 2015-04-27 lun. 17:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
