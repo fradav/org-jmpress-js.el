@@ -1,9 +1,9 @@
-;;; ox-jmpress-js.el --- impress.js Back-End for Org Export Engine
+;;; ox-jmpress-js.el --- jmpress.js Back-End for Org Export Engine
 
-;; Copyright (C) 2014, 2015 Takumi Kinjo.
+;; Copyright (C) 2015 François-David Collin.
 
-;; Author: Takumi Kinjo <takumi dot kinjo at gmail dot org>
-;; URL: https://github.com/kinjo/org-impress-js.el
+;; Author: François-David Collin <fradav at gmail dot org>
+;; URL: https://github.com/fradav/org-jmpress-js.el
 ;; Version: 0.1
 ;; Package-Requires: ((org "8"))
 ;; Keywords: outlines, hypermedia, calendar, wp
