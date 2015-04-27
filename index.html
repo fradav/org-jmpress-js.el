@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>org-jmpress-js.el</title>
+<!-- 2015-04-27 lun. 16:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="François-David Collin" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<link  rel="stylesheet" href="css/simple.css" type="text/css" /><script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jmpress/jmpress.js"></script>
+<script src="simple.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">org-jmpress-js.el
+<br>
+<span class="subtitle">minimalistic org-mode backend for jmpress.js</span>
+</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">WHAT'S THIS?</a></li>
+<li><a href="#orgheadline2">INSTALLATION</a></li>
+<li><a href="#orgheadline3">INSTALLATION Part two</a></li>
+<li><a href="#orgheadline4">USAGE</a></li>
+<li><a href="#orgheadline5">EXPORT OPTIONS</a></li>
+<li><a href="#orgheadline6">GUIDELINES</a></li>
+<li><a href="#orgheadline7">LICENSE</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">WHAT'S THIS?</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+This library implements a minimalistic jmpress.js back-end for Org
+generic exporter based on ox-html.el.
+</p>
+
+<p>
+<a href="http://fradav.github.io/org-jmpress-js.el/">http://fradav.github.io/org-jmpress-js.el/</a> is a demo page.
+</p>
+
+<ul class="org-ul">
+<li>See <a href="http://orgmode.org/">http://orgmode.org/</a> about Org-mode.</li>
+<li>See <a href="http://jmpressjs.github.io/jmpress.js/">http://jmpressjs.github.io/jmpress.js/</a> about jmpress.js.</li>
+</ul>
+
+<p>
+This work is mostly based on kinjo's own impress.js backend.
+</p>
+
+<p>
+This has been tested on latest org-mode (git version)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">INSTALLATION</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<ol class="org-ol">
+<li><p>
+First of all, make sure your Org-mode version.
+This library has been tested on 8.3beta.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-text">M-x org-version
+</pre>
+</div></li>
+<li><p>
+Get org-impress-js.el. For example,
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/fradav/org-jmpress-js.el.git
+</pre>
+</div></li>
+<li><p>
+Add load-path in your init.el and restart the emacs.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="color: #8b2252;">"~/org-jmpress-js.el"</span>)
+(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ox-jmpress-js</span>)
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">INSTALLATION Part two</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<ol class="org-ol">
+<li>Install node-kit</li>
+<li><p>
+Install Bower
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">npm install -g bower
+</pre>
+</div></li>
+<li><p>
+Install jQuery
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">bower install jquery
+</pre>
+</div></li>
+<li><p>
+Install jmpress.js
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">bower install jmpress
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">USAGE</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<ol class="org-ol">
+<li>Open README.org in your emacs.</li>
+<li>To export to jmpress.js HTML file, type <code>C-c</code> <code>C-e</code>.</li>
+<li><code>*Org Export Dispatcher*</code> buffer will open.
+Hit <code>J</code> key 2 times, then README.html will be exported.</li>
+<li>Open exported file in your web browser.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">EXPORT OPTIONS</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+Following special export options are available.
+</p>
+<ul class="org-ul">
+<li><code>#+JMPRESSJS_STYLE</code>
+    A URL or filepath to jmpress.js's CSS file.</li>
+
+<li><code>#+JMPRESSJQ_SRC</code>
+    A URL or filepath to jQuery.</li>
+
+<li><code>#+JMPRESSJS_SRC</code>
+    A URL or filepath to jmpress.js.</li>
+
+<li><code>#+JMPRESSUSER_SRC</code>
+    A URL or filepath to user script.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">GUIDELINES</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<p>
+The main idea is to generate an almost vanilla org-html file and to
+handle everything for jmpress with the help of <code>jQuery</code> DOM
+facilities. So a user script should contain three parts (see
+<code>simple.js</code> for example):
+</p>
+<dl class="org-dl">
+<dt>DOM reorganisation</dt><dd>like title, postamble placement, id
+generation</dd>
+<dt>Class style application</dt><dd>where the <code>step</code> and/or <code>slide</code> classes
+should be applied, for example</dd>
+<dt>Jmpress specific calls</dt><dd>like template applications, and finally
+the mandatory <code>.jmpress()</code> call</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">LICENSE</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<p>
+Licensed under the GPLv2 license.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: François-David Collin</p>
+<p class="date">Created: 2015-04-27 lun. 16:03</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
