@@ -3,8 +3,8 @@
 #+AUTHOR: François-David Collin
 #+OPTIONS: toc:1 num:nil
 #+JMPRESSJS_STYLE: css/simple.css
-#+JMPRESSJQ_SRC: bower_components/jquery/dist/jquery.js
-#+JMPRESSJS_SRC: bower_components/jmpress/jmpress.js
+#+JMPRESSJQ_SRC: js/jquery/jquery.min.js
+#+JMPRESSJS_SRC: js/jmpress/jmpress.js
 #+JMPRESSUSER_SRC: simple.js
 * WHAT'S THIS?
   This library implements a minimalistic jmpress.js back-end for Org
@@ -38,17 +38,13 @@
 
 * INSTALLATION Part two
   1. Install node-kit
-  2. Install Bower
+  2. Install Bower-installer
      #+BEGIN_SRC sh
-       npm install -g bower
+       npm install -g bower-installer
      #+END_SRC
-  3. Install jQuery
+  3. Install jQuery and jmpress
      #+BEGIN_SRC sh
-       bower install jquery
-     #+END_SRC
-  4. Install jmpress.js
-     #+BEGIN_SRC sh
-       bower install jmpress
+       bower-installer
      #+END_SRC
 
 * USAGE
@@ -72,11 +68,19 @@
   * =#+JMPRESSUSER_SRC=
     A URL or filepath to user script.
 
+* MOTIVATIONS
+  - As org-mode is always in motion, an org-html derived backend like
+    =org-jmpress-js.el= is somewhat problematic in mid/long term,
+    because of broken dependencies.
+  - The fact that =jmpress.js= already
+    use =jQuery= should allow us to centralize all the presentation
+    magics in the javascript side.
+  - That's why the elisp file almost does nothing except adding the
+    specific js and css files to a vanilla org-html generated file.
+
 * GUIDELINES
-  The main idea is to generate an almost vanilla org-html file and to
-  handle everything for jmpress with the help of =jQuery= DOM
-  facilities. So a user script should contain three parts (see
-  =simple.js= for example):
+  The user script should contain three parts (see =simple.js= for
+  example):
   - DOM reorganisation :: like title, postamble placement, id
        generation
   - Class style application :: where the =step= and/or =slide= classes

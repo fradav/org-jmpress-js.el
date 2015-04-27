@@ -1,6 +1,5 @@
-*.png
-*.json
 *.html
 *~
 bower_components/
+js/
 .sass-cache/
