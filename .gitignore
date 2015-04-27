@@ -1,0 +1,6 @@
+*.png
+*.json
+*.html
+*~
+bower_components/
+.sass-cache/

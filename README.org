@@ -1,0 +1,87 @@
+#+TITLE: org-jmpress-js.el
+#+SUBTITLE: minimalistic org-mode backend for jmpress.js
+#+AUTHOR: François-David Collin
+#+OPTIONS: toc:1 num:nil
+#+JMPRESSJS_STYLE: css/simple.css
+#+JMPRESSJQ_SRC: bower_components/jquery/dist/jquery.js
+#+JMPRESSJS_SRC: bower_components/jmpress/jmpress.js
+#+JMPRESSUSER_SRC: simple.js
+* WHAT'S THIS?
+  This library implements a minimalistic jmpress.js back-end for Org
+  generic exporter based on ox-html.el.
+
+  http://fradav.github.io/org-jmpress-js.el/ is a demo page.
+
+  * See http://orgmode.org/ about Org-mode.
+  * See http://jmpressjs.github.io/jmpress.js/ about jmpress.js.
+
+  This work is mostly based on kinjo's own impress.js backend.
+
+  This has been tested on latest org-mode (git version)
+
+* INSTALLATION
+  1. First of all, make sure your Org-mode version.
+     This library has been tested on 8.3beta.
+     #+BEGIN_SRC text
+       M-x org-version
+     #+END_SRC
+  2. Get org-impress-js.el. For example,
+     #+BEGIN_SRC sh
+       git clone https://github.com/fradav/org-jmpress-js.el.git
+     #+END_SRC
+  3. Add load-path in your init.el and restart the emacs.
+     #+BEGIN_SRC emacs-lisp
+       (add-to-list 'load-path "~/org-jmpress-js.el")
+       (require 'ox-jmpress-js)
+     #+END_SRC
+
+* INSTALLATION Part two
+  1. Install node-kit
+  2. Install Bower
+     #+BEGIN_SRC sh
+       npm install -g bower
+     #+END_SRC
+  3. Install jQuery
+     #+BEGIN_SRC sh
+       bower install jquery
+     #+END_SRC
+  4. Install jmpress.js
+     #+BEGIN_SRC sh
+       bower install jmpress
+     #+END_SRC
+
+* USAGE
+  1. Open README.org in your emacs.
+  2. To export to jmpress.js HTML file, type =C-c= =C-e=.
+  3. =*Org Export Dispatcher*= buffer will open.
+     Hit =J= key 2 times, then README.html will be exported.
+  4. Open exported file in your web browser.
+
+* EXPORT OPTIONS
+  Following special export options are available.
+  * =#+JMPRESSJS_STYLE=
+    A URL or filepath to jmpress.js's CSS file.
+
+  * =#+JMPRESSJQ_SRC=
+    A URL or filepath to jQuery.
+
+  * =#+JMPRESSJS_SRC=
+    A URL or filepath to jmpress.js.
+
+  * =#+JMPRESSUSER_SRC=
+    A URL or filepath to user script.
+
+* GUIDELINES
+  The main idea is to generate an almost vanilla org-html file and to
+  handle everything for jmpress with the help of =jQuery= DOM
+  facilities. So a user script should contain three parts (see
+  =simple.js= for example):
+  - DOM reorganisation :: like title, postamble placement, id
+       generation
+  - Class style application :: where the =step= and/or =slide= classes
+       should be applied, for example
+  - Jmpress specific calls :: like template applications, and finally
+       the mandatory =.jmpress()= call
+* LICENSE
+  Licensed under the GPLv2 license.
+
