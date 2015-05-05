@@ -1,5 +1,4 @@
 *.html
 *~
 bower_components/
-js/
 .sass-cache/
