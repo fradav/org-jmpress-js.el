@@ -82,7 +82,7 @@ Use JMPRESSJS_STYLE option in your Org file is available too."
   :package-version '(Org . "8.0")
   :type 'string)
 
-(defcustom org-jmpress-js-jquery "bower_components/jquery/dist/jquery.js"
+(defcustom org-jmpress-js-jquery "js/jquery/jquery.min.js"
   "Path to the JavaScript file for jQuery.
 
 Use JMPRESSJQ_SRC option in your Org file is available too."
@@ -91,7 +91,7 @@ Use JMPRESSJQ_SRC option in your Org file is available too."
   :package-version '(Org . "8.0")
   :type 'string)
 
-(defcustom org-jmpress-js-javascript "bower_components/jmpress/jmpress.js"
+(defcustom org-jmpress-js-javascript "js/jmpress/jmpress.js"
   "Path to the JavaScript file for jmpress.js.
 
 Use JMPRESSJS_SRC option in your Org file is available too."
@@ -100,7 +100,7 @@ Use JMPRESSJS_SRC option in your Org file is available too."
   :package-version '(Org . "8.0")
   :type 'string)
 
-(defcustom org-jmpress-js-user "jmpress-user.js"
+(defcustom org-jmpress-js-user "js/user.js"
   "Path to the user Javascript file.
 
 Use JMPRESSUSER_SRC option in your Org file is available too."

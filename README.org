@@ -5,7 +5,7 @@
 #+JMPRESSJS_STYLE: css/simple.css
 #+JMPRESSJQ_SRC: js/jquery/jquery.min.js
 #+JMPRESSJS_SRC: js/jmpress/jmpress.js
-#+JMPRESSUSER_SRC: simple.js
+#+JMPRESSUSER_SRC: js/user.js
 * WHAT'S THIS?
   This library implements a minimalistic jmpress.js back-end for Org
   generic exporter based on ox-html.el.
@@ -79,7 +79,7 @@
     specific js and css files to a vanilla org-html generated file.
 
 * GUIDELINES
-  The user script should contain three parts (see =simple.js= for
+  The user script should contain three parts (see =user.js= for
   example):
   - DOM reorganisation :: like title, postamble placement, id
        generation
