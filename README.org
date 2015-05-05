@@ -79,7 +79,7 @@
     specific js and css files to a vanilla org-html generated file.
 
 * GUIDELINES
-  The user script should contain three parts (see =user.js= for
+  The user script should contain three parts (see =js/user.js= for
   example):
   - DOM reorganisation :: like title, postamble placement, id
        generation
