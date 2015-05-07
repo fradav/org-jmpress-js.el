@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Systèmes embarqués « grand public »</title>
+<!-- 2015-05-07 jeu. 16:26 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="François-David Collin" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<link  rel="stylesheet" href="css/devembedded.css" type="text/css" /><script src="js/jquery/jquery.min.js"></script>
+<script src="js/jmpress/jmpress.js"></script>
+<script src="js/devembedded.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Systèmes embarqués « grand public »
+<br>
+<span class="subtitle">Évolutions et tendances</span>
+</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Un peu de vocabulaire</a></li>
+<li><a href="#orgheadline2">Avant l'Arduino</a></li>
+<li><a href="#orgheadline3">2005 : Et l'Arduino fut</a></li>
+<li><a href="#orgheadline8">Écosystèmes inspirés/dérivés</a></li>
+<li><a href="#orgheadline9">Systèmes sans soudure</a></li>
+<li><a href="#orgheadline10">Familles de processeurs</a></li>
+<li><a href="#orgheadline11">mBed (Sponsorisé par ARM)</a></li>
+<li><a href="#orgheadline14">Raspberry A-B 1&amp;2</a></li>
+<li><a href="#orgheadline15">Tendances générales</a></li>
+<li><a href="#orgheadline18">Et chez Microsoft</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="vocabulaire"><a id="orgheadline1"></a>Un peu de vocabulaire</h2>
+<div class="outline-text-2" id="text-vocabulaire">
+<dl class="org-dl">
+<dt>SBC</dt><dd><p>
+<a href="http://en.wikipedia.org/wiki/Single-board_computer">Single Board Computer</a>
+</p>
+
+<div id="orgparagraph1" class="figure">
+<p><img src="./images/1200px-Early_1976_MMD1_Prototype_most_chips_removed.jpg" alt="1200px-Early_1976_MMD1_Prototype_most_chips_removed.jpg" />
+</p>
+<p><span class="figure-number">Figure 1:</span> MMD1 Prototype</p>
+</div>
+
+<p>
+Carte complète et autonome avec entrées/sorties
+</p></dd>
+<dt>SOM</dt><dd><p>
+<a href="http://en.wikipedia.org/wiki/Computer-on-module">System On a Module</a>
+</p>
+
+<div id="orgparagraph2" class="figure">
+<p><img src="./images/DHCOM_Computer_On_Module_-_AM35x.jpg" alt="DHCOM_Computer_On_Module_-_AM35x.jpg" />
+</p>
+<p><span class="figure-number">Figure 2:</span> DHCOM Computer on Module AM35x</p>
+</div>
+
+<p>
+Carte complète mais nécessitant un bus ou une extension
+</p></dd>
+<dt>SOC</dt><dd><p>
+<a href="http://en.wikipedia.org/wiki/System_on_a_chip">System On a Chip</a>
+</p>
+
+<div id="orgparagraph3" class="figure">
+<p><img src="./images/AMD_Geode_LX_800_CPU.jpg" alt="AMD_Geode_LX_800_CPU.jpg" style="max-width:30%" />
+</p>
+<p><span class="figure-number">Figure 3:</span> AMD Geode LX 800</p>
+</div>
+
+<p>
+Chip plus puissant et plus complet qu'un microcontroleur
+« simple » (se rapproche d'un SOM)
+</p></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="avant-arduino"><a id="orgheadline2"></a>Avant l'Arduino</h2>
+<div class="outline-text-2" id="text-avant-arduino">
+<dl class="org-dl">
+<dt>1990</dt><dd><p>
+<a href="http://en.wikipedia.org/wiki/BASIC_Stamp">Parallax BASIC Stamp</a>
+</p>
+<div class="org-src-container">
+<label class="org-src-name">Blinky Basic</label>
+<pre class="src src-basic" id="orgsrcblock1">'{$STAMP BS2} 
+'{$PBASIC 2.5}
+OUTPUT 14
+DO
+  HIGH 14
+  PAUSE 1000
+  LOW 14
+  PAUSE 1000
+LOOP
+</pre>
+</div>
+
+
+<div id="orgparagraph4" class="figure">
+<p><object type="image/svg+xml" data="./images/BASIC-Stamp-2_eng.svg" >
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Figure 4:</span> BASIC Stamp</p>
+</div>
+
+<p>
+Utilisation essentiellement académique, relativement chère (150€
+avec les outils de développement), nécessite soudure headers etc. 
+</p></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="arduino"><a id="orgheadline3"></a>2005 : Et l'Arduino fut</h2>
+<div class="outline-text-2" id="text-arduino">
+<p>
+<a href="http://arduino.cc/">Premier écosystème complet</a> avec  
+</p>
+<ol class="org-ol">
+<li>SBC (Open-source hardware <a href="images/Open-source-hardware-logo.svg">Logo OSH</a>)</li>
+<li>IDE (basé sur <a href="https://processing.org/reference/environment/">Processing</a>)</li>
+<li>Prix contenu (première cartes à ~25€)</li>
+</ol>
+
+<div class="org-src-container">
+<label class="org-src-name">Blinky Arduino</label>
+<pre class="src src-C++" id="orgsrcblock2"><span style="color: #228b22;">int</span> <span style="color: #a0522d;">led</span> = 13;
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">setup</span>() {                
+  pinMode(led, OUTPUT);     
+}
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">loop</span>() {
+  digitalWrite(led, HIGH);   
+  delay(1000);               
+  digitalWrite(led, LOW);    
+  delay(1000);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="inspiration"><a id="orgheadline8"></a>Écosystèmes inspirés/dérivés</h2>
+<div class="outline-text-2" id="text-inspiration">
+<p>
+Selon trois axes
+</p>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Design carte (Shields)</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+<a href="http://playground.arduino.cc/Main/SimilarBoards#goArdComp">Compatibilité</a> avec les Shields
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">IDE</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+Utilisation directe de l'<a href="http://www.arduino.cc/en/Main/Software">IDE Officiel</a> arduino
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Fonctions/prix</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+Carte et environnement différents mais similitudes fonctions et
+prix équivalent: 
+</p>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><a href="https://learn.adafruit.com/getting-started-with-the-lpc810/introduction">exemple</a> minimaliste.</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="sans-soudure"><a id="orgheadline9"></a>Systèmes sans soudure</h2>
+<div class="outline-text-2" id="text-sans-soudure">
+<ul class="org-ul">
+<li><a href="http://www.seeedstudio.com/wiki/GROVE_System">Grove</a></li>
+<li><a href="https://www.olimex.com/Products/Modules/UEXT/">Olimex UEXT</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="cpu"><a id="orgheadline10"></a>Familles de processeurs</h2>
+<div class="outline-text-2" id="text-cpu">
+<ul class="org-ul">
+<li><a href="http://en.wikipedia.org/wiki/Atmel_AVR">Atmel AVR (Arduino original)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/ARM_Cortex-M">ARM Cortex-M</a> (Cortex M0 et M4 en particulier)</li>
+<li>Intel x86</li>
+<li><a href="http://en.wikipedia.org/wiki/LEON">Sparc V8</a> (utilisé pour <a href="http://navspark.mybigcommerce.com/navspark-arduino-compatible-development-board-with-gps/">NavSpark</a>)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="mBed"><a id="orgheadline11"></a><a href="http://en.wikipedia.org/wiki/Mbed">mBed</a> (Sponsorisé par ARM)</h2>
+<div class="outline-text-2" id="text-mBed">
+<ul class="org-ul">
+<li>très bien implanté</li>
+<li>IDE en ligne</li>
+<li><a href="https://developer.mbed.org/platforms/">Gamme complète</a></li>
+</ul>
+
+<div class="org-src-container">
+<label class="org-src-name">Blinky mBed</label>
+<pre class="src src-C++" id="orgsrcblock3"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"mbed.h"</span>
+
+<span style="color: #228b22;">DigitalOut</span> <span style="color: #0000ff;">myled</span>(LED1);
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>() {
+  <span style="color: #a020f0;">while</span>(1) {
+    myled = 1;
+    wait(0.2);
+    myled = 0;
+
+    wait(0.2);
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="raspberry-pi"><a id="orgheadline14"></a>Raspberry A-B 1&amp;2</h2>
+<div class="outline-text-2" id="text-raspberry-pi">
+</div>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">Positionnement</h3>
+<div class="outline-text-3" id="text-orgheadline12">
+<ul class="org-ul">
+<li>SBC entre l'arduino et le pc classique</li>
+<li>Prix contenu (35€)</li>
+<li>Accessibilité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13">Raspberry-like</h3>
+<div class="outline-text-3" id="text-orgheadline13">
+<ul class="org-ul">
+<li>Design carte (gpio compatible)
+Example : <a href="http://en.wikipedia.org/wiki/Banana_Pi">Banana Pi</a></li>
+<li>Programmation</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="tendances"><a id="orgheadline15"></a>Tendances générales</h2>
+<div class="outline-text-2" id="text-tendances">
+<ul class="org-ul">
+<li>Rapprochement SBC généraliste/spécialisé (Raspberry/Arduino)</li>
+<li>Langages de haut niveau (python, go, node.js)</li>
+<li>Prix!
+<ol class="org-ol">
+<li><a href="http://fr.aliexpress.com/item/high-quality-UNO-R3-MEGA328P-for-Arduino-UNO-R3-NO-USB-CABLE/1986980366.html">Arduino Uno</a></li>
+<li><a href="http://fr.aliexpress.com/item/Free-Shipping-1PCS-Nano-3-0-controller-compatible-with-nano-CH340-USB-driver-NO-CABLE-for/32259793183.html">Arduino nano</a></li>
+</ol></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="ms"><a id="orgheadline18"></a>Et chez Microsoft</h2>
+<div class="outline-text-2" id="text-ms">
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><a href="http://en.wikipedia.org/wiki/.NET_Micro_Framework">.NET Micro Framework</a> (Support C#, VB sur Visual Studio)</h3>
+<div class="outline-text-3" id="text-orgheadline16">
+<ul class="org-ul">
+<li>Plateforme <a href="http://en.wikipedia.org/wiki/.NET_Gadgeteer">.Net Gadgeteer</a></li>
+<li><a href="https://www.ghielectronics.com/catalog/product/349">FEZ Cerberus Mainboard</a></li>
+<li><a href="https://www.ghielectronics.com/catalog/category/275">Catalogue</a></li>
+</ul>
+
+
+<div class="org-src-container">
+<label class="org-src-name">Blinky .NET Micro Framework</label>
+<pre class="src src-csharp" id="orgsrcblock4"><span style="color: #a020f0;">using</span> <span style="color: #008b8b;">System.Threading</span>;
+<span style="color: #a020f0;">using</span> <span style="color: #008b8b;">Microsoft.SPOT.Hardware</span>;
+
+<span style="color: #a020f0;">public</span> <span style="color: #a020f0;">class</span> <span style="color: #228b22;">Program</span>
+{
+    <span style="color: #a020f0;">public</span> <span style="color: #a020f0;">static</span> <span style="color: #228b22;">void</span> <span style="color: #0000ff;">Main</span>()
+    {
+        <span style="color: #228b22;">OutputPort</span> <span style="color: #a0522d;">LED</span>;
+        LED = <span style="color: #a020f0;">new</span> <span style="color: #228b22;">OutputPort</span>(<span style="color: #228b22;">Cpu</span>.<span style="color: #228b22;">Pin</span>.<span style="color: #228b22;">GPIO_Pin1</span>, <span style="color: #008b8b;">true</span>);
+
+        <span style="color: #0000ff;">while</span> (<span style="color: #008b8b;">true</span>)
+        {
+            <span style="color: #228b22;">LED</span>.<span style="color: #0000ff;">Write</span>(!<span style="color: #228b22;">LED</span>.<span style="color: #0000ff;">Read</span>());
+            <span style="color: #228b22;">Thread</span>.<span style="color: #0000ff;">Sleep</span>(200);
+        }
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17">Windows 10 IoT</h3>
+<div class="outline-text-3" id="text-orgheadline17">
+<ul class="org-ul">
+<li>Windows 10 Preview sur raspberry</li>
+<li>Possible support élargi sur SBC arduino-like ?</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: François-David Collin</p>
+<p class="date">Created: 2015-05-07 jeu. 16:26</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
