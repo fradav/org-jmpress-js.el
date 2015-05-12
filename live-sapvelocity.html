@@ -8,6 +8,21 @@
 		<!-- EXAMPLE SCRIPT -->
 		<script>
 
+		var dtmax = 6;
+		
+		function deltaT(dataTable, rowNum) {
+			var T1 = dataTable.getValue(rowNum, 1);
+			var T2 = dataTable.getValue(rowNum, 2);
+			var Ti1 = dataTable.getValue(rowNum, 3);
+			var Ti2 = dataTable.getValue(rowNum, 4);
+			return (T2 - Ti2) - (T1 - Ti1);
+		}
+
+		function granierF(dataTable, rowNum) {
+			var dt = deltaT(dataTable, rowNum);
+			return 360000 * Math.pow(dtmax/dt - 1,1.231)*0.00011899
+		}
+
 		// onload callback
 		function drawChart() {
 
@@ -22,19 +37,17 @@
 
 				var data = new google.visualization.DataTable();
 
-				data.addColumn('datetime', 'Time');
-				data.addColumn('number', 't1');
-				data.addColumn('number', 't2');
-				data.addColumn('number', 'ti1');
-				data.addColumn('number', 'ti2');
-				data.addColumn('number', 'Delta T');
+				data.addColumn('datetime', 'Time', 't');
+				data.addColumn('number', 'Reference Thermal Probe', 'T1');
+				data.addColumn('number', 'Heated Thermal Probe', 'T2');
+				data.addColumn('number', 'Reference Probe Internal Temp', 'T1int');
+				data.addColumn('number', 'Heated Probe Internal Tempti2', 'T2int');
 
 				$.each(results, function (i, row) {
 					var t1 = parseFloat(row.t1);
 					var t2 = parseFloat(row.t2);
 					var ti1 = parseFloat(row.ti1);
 					var ti2 = parseFloat(row.ti2);
-					var deltaT = (t2 - ti2) - (t1-ti1);
 					
 					data.addRow([
 						(new Date(row.timestamp)),
@@ -42,14 +55,38 @@
 						t2,
 						ti1,
 						ti2,
-						deltaT
 					]);
 				});
 
-				var chart = new google.visualization.LineChart($('#chart').get(0));
+				var viewTemps = new google.visualization.DataView(data);
+				viewTemps.setColumns([0,1,2,3,4,
+					{
+						calc:deltaT,
+						type:'number',
+						label:'Temperature difference between Probes in °C',
+						id:'deltaT'
+					}
+				]);
+						
+				var viewSV = new google.visualization.DataView(data);
+				viewSV.setColumns([0,
+					{
+						calc:granierF,
+						type:'number',
+						label:'Sap Velocity Flow in ml per hour and cm\u00B2',
+						id:'deltaT'
+					}
+				]);	
+					
+				var chart1 = new google.visualization.LineChart($('#chart1').get(0));
+				var chart2 = new google.visualization.LineChart($('#chart2').get(0));
 
-				chart.draw(data, {
-					title: 'Sap Velocity Sensor Amiens'
+				chart1.draw(viewTemps, {
+					title: 'Thermal Probes'
+				});
+
+				chart2.draw(viewSV, {
+					title: 'Sap Velocity (Granier\'s Formulae)'
 				});
 
 			});
@@ -68,6 +105,7 @@
 
 	</head>
 	<body>
-		<div id="chart" style="width: 100%;"></div>
+		<div id="chart1" style="width: 100%;"></div>
+		<div id="chart2" style="width: 100%;"></div>
 	</body>
 </html>
