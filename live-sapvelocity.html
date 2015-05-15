@@ -8,7 +8,7 @@
 		<!-- EXAMPLE SCRIPT -->
 		<script>
 
-		var dtmax = 6;
+		var dtmax = 2.35;
 		
 		function deltaT(dataTable, rowNum) {
 			var T1 = dataTable.getValue(rowNum, 1);
@@ -20,7 +20,7 @@
 
 		function granierF(dataTable, rowNum) {
 			var dt = deltaT(dataTable, rowNum);
-			return 360000 * Math.pow(dtmax/dt - 1,1.231)*0.00011899
+			return 3600000 * Math.pow(dtmax/dt - 1,1.231)*0.00011899
 		}
 
 		// onload callback
@@ -30,8 +30,8 @@
 
 			// JSONP request
 			var jsonData = $.ajax({
-				url: 'https://data.sparkfun.com/output/' + public_key + '.json',
-				data: {page: 1},
+				url: 'http://data.sparkfun.com/output/' + public_key + '.json',
+				<!-- data: {page: 1}, -->
 				dataType: 'jsonp',
 			}).done(function (results) {
 
@@ -73,7 +73,7 @@
 					{
 						calc:granierF,
 						type:'number',
-						label:'Sap Velocity Flow in ml per hour and cm\u00B2',
+						label:'Sap Velocity Flow in mm per hour',
 						id:'deltaT'
 					}
 				]);	
